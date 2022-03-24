@@ -15,7 +15,7 @@ class ExceptionFilter implements IExceptionFilter {
     req: Request,
     res: Response,
     next: NextFunction
-  ) {
+  ): void {
     if (err instanceof HttpError) {
       this.logger.error(
         `[${err.context}] Error ${err.statusCode}: ${err.message}`

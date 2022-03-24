@@ -16,15 +16,15 @@ class LoggerService implements ILogger {
     });
   }
 
-  log(...args: Array<unknown>) {
+  log(...args: Array<unknown>): void {
     this.logger.info(...args);
   }
 
-  error(...args: Array<unknown>) {
+  error(...args: Array<unknown>): void {
     this.logger.error(...args);
   }
 
-  warn(...args: Array<unknown>) {
+  warn(...args: Array<unknown>): void {
     this.logger.warn(...args);
   }
 }

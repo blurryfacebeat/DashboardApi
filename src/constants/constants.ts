@@ -1,4 +1,4 @@
-const PORT: number = 8000;
+const PORT = 8000;
 
 const TYPES = {
   Application: Symbol.for('Application'),

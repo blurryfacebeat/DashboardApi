@@ -25,15 +25,15 @@ class App {
     this.exceptionFilter = exceptionFilter;
   }
 
-  useRoutes() {
+  useRoutes(): void {
     this.app.use('/users', this.userController.router);
   }
 
-  useExceptionFilters() {
+  useExceptionFilters(): void {
     this.app.use(this.exceptionFilter.catch.bind(this.exceptionFilter));
   }
 
-  public async init() {
+  public async init(): Promise<void> {
     this.useRoutes();
     this.useExceptionFilters();
     this.server = this.app.listen(this.port);
