@@ -5,6 +5,7 @@ import { UserController } from './users/users.controller.js';
 import { ILogger } from './logger/logger.interface.js';
 import { inject, injectable } from 'inversify';
 import { IExceptionFilter } from './errors/exception.filter.interface.js';
+import bodyParser from 'body-parser';
 import 'reflect-metadata';
 
 @injectable()
@@ -25,6 +26,11 @@ class App {
     this.exceptionFilter = exceptionFilter;
   }
 
+  useMiddleware(): void {
+    // Добавляем глобально JSON парсер, который будет читать body
+    this.app.use(bodyParser.json());
+  }
+
   useRoutes(): void {
     this.app.use('/users', this.userController.router);
   }
@@ -34,6 +40,7 @@ class App {
   }
 
   public async init(): Promise<void> {
+    this.useMiddleware();
     this.useRoutes();
     this.useExceptionFilters();
     this.server = this.app.listen(this.port);
