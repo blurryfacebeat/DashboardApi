@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node dist/main.js",
-    "dev": "NODE_OPTIONS='--no-warnings --loader ts-node/esm' nodemon --watch 'src/**/*' -e ts,tsx --exec ts-node src/main.ts",
+    "dev": "NODE_OPTIONS='--loader ts-node/esm' nodemon --watch 'src/**/*' -e ts,tsx,json --exec node --inspect=localhost:9222 -r ts-node/register src/main.ts",
     "build": "rm -rf ./dist && tsc",
     "lint": "eslint ./src/**",
     "lint:fix": "eslint ./src/** --fix"
