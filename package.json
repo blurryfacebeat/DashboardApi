@@ -7,7 +7,9 @@
   "scripts": {
     "start": "node dist/main.js",
     "dev": "NODE_OPTIONS='--no-warnings --loader ts-node/esm' nodemon --watch 'src/**/*' -e ts,tsx --exec ts-node src/main.ts",
-    "build": "rm -rf ./dist && tsc"
+    "build": "rm -rf ./dist && tsc",
+    "lint": "eslint ./src/**",
+    "lint:fix": "eslint ./src/** --fix"
   },
   "repository": {
     "type": "git",
