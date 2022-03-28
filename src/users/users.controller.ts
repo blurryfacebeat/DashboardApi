@@ -9,6 +9,7 @@ import { IUserController } from './users.controller.interface.js';
 import { UserLoginDto } from './dto/user-login.dto.js';
 import { UserRegisterDto } from './dto/user-register.dto.js';
 import { UserService } from './users.service.js';
+import { ValidateMiddleware } from '../common/validate.middleware.js';
 
 @injectable()
 class UserController extends BaseController implements IUserController {
@@ -22,7 +23,7 @@ class UserController extends BaseController implements IUserController {
         path: '/register',
         method: 'post',
         func: this.register,
-        middlewares: [],
+        middlewares: [new ValidateMiddleware(UserRegisterDto)],
       },
       {
         path: '/login',
