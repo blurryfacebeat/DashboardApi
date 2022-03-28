@@ -15,7 +15,7 @@ class ValidateMiddleware implements IMiddleware {
     });
   }
 
-  private formatErrors(errors: Array<ValidationError>) {
+  private formatErrors(errors: Array<ValidationError>): Array<string> {
     const result: Array<string> = [];
     errors.forEach((error) => {
       result.push(Object.values(error.constraints as any)?.[0] as string);
